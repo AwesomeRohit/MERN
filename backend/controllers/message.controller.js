@@ -1,5 +1,7 @@
 import Conversation from "../models/conversation.model.js";
 import Message from "../models/message.model.js";
+import { getRecieverSocketId, io } from "../socket/socket.js";
+
 export const sendMessage = async (req, res) => {
 
     try {
@@ -30,8 +32,14 @@ export const sendMessage = async (req, res) => {
         }
 
         //SOCKET IO Functionality will go here
+
         // we optimized the code by using promises and running both of the save functions at the same time for less time consuming
         await Promise.all([conversation.save(), newMessage.save()]);
+
+        const recieverSocketId = getRecieverSocketId(recieverID);
+        if(recieverSocketId){
+            io.to(recieverSocketId).emit("newMessage",newMessage);
+        }
 
         res.status(201).json(newMessage);
 
