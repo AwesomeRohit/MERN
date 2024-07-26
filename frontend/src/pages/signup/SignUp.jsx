@@ -51,7 +51,7 @@ function SignUp() {
             <input
               type="text"
               placeholder='FullName'
-              className='w-full input-bordered h-10'
+              className='w-full input-bordered h-10 bg-transparent'
               value={inputs.fullName}
               onChange={(e) => setInputs({ ...inputs, fullName: e.target.value })}
             />
@@ -89,7 +89,7 @@ function SignUp() {
               placeholder='Confirm Password'
               value={inputs.confirmPassword}
               onChange={(e) => setInputs({ ...inputs, confirmPassword: e.target.value })}
-              className='w-full input-bordered h-10'
+              className='w-full input-bordered h-10 bg-transparent'
             />
           </div>
 
