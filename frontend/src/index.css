@@ -4,7 +4,7 @@
 
 
 body{
-  background-color: rgb(0, 0, 0);
+  background-image: url('./assets/backgroundImage.jpg');
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
