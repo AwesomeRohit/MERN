@@ -13,25 +13,15 @@ function MessageContainer() {
   }, [setSelectedConversation]);
 
   return (
-    <div className='flex flex-col min-h-screen w-full'>
-      {!selectedConversation ? (
-        <NoChatSelected />
-      ) : (
+    <div className='min-w-full flex flex-col sm:min-w-24'>
+      {!selectedConversation ? (<NoChatSelected />) : (
         <>
-          <div className='bg-gray-700 px-2 py-1 sm:px-4 sm:py-2 md:px-6 md:py-3 lg:px-8 lg:py-4 mb-2'>
-            <span className='text-gray-200 text-xs sm:text-sm md:text-base lg:text-lg'>
-              To:
-            </span>
-            <span className='text-gray-100 font-bold ml-1 text-xs sm:text-sm md:text-base lg:text-lg'>
-              {selectedConversation.username}
-            </span>
+          <div className='bg-gray-700 px-4 sm:px-10 py-4 mb-2 flex items-center'>
+            <span className='label-text text-gray-200'>To: </span>
+            <span className='text-gray-100 font-bold ml-2'>{selectedConversation.fullName}</span>
           </div>
-          <div className='flex-grow overflow-auto'>
-            <Messages />
-          </div>
-          <div className='p-1 sm:p-2 md:p-3'>
-            <MessageInput />
-          </div>
+          <Messages />
+          <MessageInput />
         </>
       )}
     </div>
@@ -44,8 +34,8 @@ const NoChatSelected = () => {
   const { authUser } = useAuthContext();
 
   return (
-    <div className='flex items-center justify-center w-full h-full p-2 sm:p-4'>
-      <div className='text-center text-xs sm:text-sm md:text-base lg:text-lg xl:text-xl text-gray-200 font-semibold flex flex-col items-center gap-1 sm:gap-2'>
+    <div className='flex items-center justify-center w-full h-full'>
+      <div className='px-4 text-center text-sm sm:text-lg md:text-xl text-gray-200 font-semibold flex flex-col items-center gap-2'>
         <p>Welcome {authUser.username}</p>
         <p>Select a chat to start messaging</p>
       </div>
