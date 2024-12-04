@@ -8,27 +8,7 @@ import connectToMongoDB from './db/connectToMongoDB.js';
 import bodyParser from 'body-parser';
 import cookieParser from 'cookie-parser';
 import { app, server } from '../backend/socket/socket.js';
-import Redis from "ioredis";
-
 dotenv.config();
-const client = new Redis({
-    host: 'redis-18117.c330.asia-south1-1.gce.redns.redis-cloud.com',
-    port: 18117,
-    username: 'student',
-    password: process.env.REDIS_PASSWORD,  // Use your actual password
-  });
-console.log(client instanceof Redis);
-
-(async () => {
-    try {
-        await client.set("Bear", "Hello");
-        const result = await client.get("Bear");
-        console.log("Result from Redis:", result);  // Expected: "Hello"
-    } catch (err) {
-        console.error("Error interacting with Redis:", err);
-    }
-})();
-
 
 const PORT = process.env.PORT;
 const __dirname = path.resolve();
