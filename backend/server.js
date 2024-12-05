@@ -8,6 +8,7 @@ import connectToMongoDB from './db/connectToMongoDB.js';
 import bodyParser from 'body-parser';
 import cookieParser from 'cookie-parser';
 import { app, server } from '../backend/socket/socket.js';
+
 dotenv.config();
 
 const PORT = process.env.PORT;
