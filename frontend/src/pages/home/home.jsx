@@ -1,17 +1,30 @@
-import React from 'react'
-import Sidebar from '../../components/sidebar/sidebar'
-import MessageContainer from '../../components/messages/MessageContainer'
+import React from "react";
+import Sidebar from "../../components/sidebar/sidebar";
+import MessageContainer from "../../components/messages/MessageContainer";
+import { Box,} from "@mui/material";
 
-function home() {
+function Home() {
   return (
-    <div className='flex sm:h-[450px] md:h-[550px] rounded-lg overflow-hidden bg-transparent bg-clip-padding backdrop-filter backdrop-blur-lg lg-opacity-0'>
-         
-    <Sidebar/>
-    <div className='divider'></div>
-    <MessageContainer/>
-         
-    </div>
-  )
+    <Box
+      sx={{
+        display: "flex",
+        width: "100vw", // Ensure it takes full width of the viewport
+        height: "100vh", // Full height of the viewport
+        backgroundColor: "grey.900", // Black background
+        overflow: "hidden", // Prevent horizontal or vertical overflow
+        padding: 0, // Remove padding
+      }}
+    >
+      {/* Sidebar */}
+      <Sidebar />
+
+      {/* Divider between Sidebar and MessageContainer */}
+      
+
+      {/* Message Container */}
+      <MessageContainer />
+    </Box>
+  );
 }
 
-export default home
+export default Home;

@@ -1,17 +1,18 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
-import GenderCheckBox from './GenderCheckBox';
-import useSignUp from '../../hooks/useSignUp.js';
-import LoadingBar from 'react-top-loading-bar'
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
+import GenderCheckBox from "./GenderCheckBox";
+import useSignUp from "../../hooks/useSignUp";
+import LoadingBar from "react-top-loading-bar";
+import { TextField, Button, Box, Typography, Container, Grid, Link as MuiLink } from "@mui/material";
 
 function SignUp() {
-  const[progress,setProgress] = useState(0);
+  const [progress, setProgress] = useState(0);
   const [inputs, setInputs] = useState({
-    fullName: '',
-    username: '',
-    password: '',
-    confirmPassword: '',
-    gender: ''
+    fullName: "",
+    username: "",
+    password: "",
+    confirmPassword: "",
+    gender: "",
   });
 
   const { loading, signup } = useSignUp();
@@ -22,7 +23,6 @@ function SignUp() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("Submitting form with inputs: ", inputs);
     try {
       await signup(inputs);
     } catch (error) {
@@ -31,81 +31,94 @@ function SignUp() {
   };
 
   return (
-
-    <>
-    <LoadingBar
-        color='#ffffff'
-        progress={progress}
-        onLoaderFinished={() => setProgress(0)}
-      />
-    <div className='flex flex-col items-center justify-center min-w-96 mx-auto '>
-      <div className="p-7 h-full w-full bg-transparent rounded-md bg-clip-padding backdrop-filter backdrop-blur-xl bg-opacity-10 border border-gray-100">
-        <h1 className='text-3xl font-semibold text-center text-white'>
-          SignUp <span className='text-blue-500'>ChatApp</span>
-        </h1>
+    <Container maxWidth="xs">
+      <LoadingBar color="#ffffff" progress={progress} onLoaderFinished={() => setProgress(0)} />
+      <Box
+        sx={{
+          backgroundColor: "rgba(255, 255, 255, 0.1)",
+          backdropFilter: "blur(10px)",
+          borderRadius: 2,
+          padding: 4,
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          boxShadow: 3,
+        }}
+      >
+        <Typography variant="h4" align="center" sx={{ color: "white", marginBottom: 2 }}>
+          SignUp <span style={{ color: "#2196f3" }}>ChatApp</span>
+        </Typography>
         <form onSubmit={handleSubmit}>
-          <div>
-            <label className='label p-2'>
-              <span className='text-base label-text'>Full Name</span>
-            </label>
-            <input
-              type="text"
-              placeholder='FullName'
-              className='w-full input-bordered h-10 bg-transparent'
+          <Box mb={2}>
+            <TextField
+              label="Full Name"
+              variant="outlined"
+              fullWidth
               value={inputs.fullName}
               onChange={(e) => setInputs({ ...inputs, fullName: e.target.value })}
+              sx={{ backgroundColor: "white", borderRadius: 1 }}
             />
-          </div>
-          <div>
-            <label className='label p-2'>
-              <span className='text-base label-text'>Username</span>
-            </label>
-            <input
-              type="text"
-              placeholder='Enter Username'
+          </Box>
+          <Box mb={2}>
+            <TextField
+              label="Username"
+              variant="outlined"
+              fullWidth
               value={inputs.username}
               onChange={(e) => setInputs({ ...inputs, username: e.target.value })}
-              className='w-full input-bordered h-10'
+              sx={{ backgroundColor: "white", borderRadius: 1 }}
             />
-          </div>
-          <div>
-            <label className='label p-2'>
-              <span className='text-base label-text'>Password</span>
-            </label>
-            <input
+          </Box>
+          <Box mb={2}>
+            <TextField
+              label="Password"
               type="password"
-              placeholder='Enter Password'
+              variant="outlined"
+              fullWidth
               value={inputs.password}
               onChange={(e) => setInputs({ ...inputs, password: e.target.value })}
-              className='w-full input-bordered h-10'
+              sx={{ backgroundColor: "white", borderRadius: 1 }}
             />
-          </div>
-          <div>
-            <label className='label p-2'>
-              <span className='text-base label-text'>Confirm Password</span>
-            </label>
-            <input
+          </Box>
+          <Box mb={2}>
+            <TextField
+              label="Confirm Password"
               type="password"
-              placeholder='Confirm Password'
+              variant="outlined"
+              fullWidth
               value={inputs.confirmPassword}
               onChange={(e) => setInputs({ ...inputs, confirmPassword: e.target.value })}
-              className='w-full input-bordered h-10 bg-transparent'
+              sx={{ backgroundColor: "white", borderRadius: 1 }}
             />
-          </div>
+          </Box>
 
           <GenderCheckBox onCheckBoxChange={handleGenderCheckBox} selectedGender={inputs.gender} />
-          <Link to="/login" className='text-sm hover:underline hover:text-white mt-2 inline-block'>
-            Already Have An Account? Login Instead
-          </Link>
-          <div>
-            <button type='submit' onClick={() => setProgress(100)} className='btn btn-block btn-sm mt-2' >
-              {loading ? <span className='loading loading-spinner'></span> : "Sign Up"}
-            </button>
-          </div>
+
+          <MuiLink component={Link} to="/login" sx={{ display: "block", textAlign: "center", marginBottom: 2, color: "white" }}>
+            Already have an account? Login instead
+          </MuiLink>
+
+          <Button
+            type="submit"
+            variant="contained"
+            fullWidth
+            sx={{
+              backgroundColor: "#2196f3",
+              color: "white",
+              padding: "12px",
+              borderRadius: 1,
+              "&:hover": {
+                backgroundColor: "#1976d2",
+              },
+            }}
+            disabled={loading}
+            onClick={() => setProgress(100)}
+          >
+            {loading ? <span className="loading loading-spinner"></span> : "Sign Up"}
+          </Button>
         </form>
-      </div>
-    </div>
-    </>
+      </Box>
+    </Container>
   );
 }
 
