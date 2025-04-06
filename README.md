@@ -2,15 +2,12 @@
 
 A real-time chat application built with the MERN stack (MongoDB, Express.js, React, Node.js) and Socket.io for real-time messaging. Users can sign up/login, create/join chat rooms, and send messages in real time.
 
-# MERN Chat App 🌐💬
-
 ![GitHub last commit](https://img.shields.io/github/last-commit/AwesomeRohit/MERN?style=for-the-badge)
 ![GitHub language count](https://img.shields.io/github/languages/count/AwesomeRohit/MERN?style=for-the-badge)
 ![GitHub repo size](https://img.shields.io/github/repo-size/AwesomeRohit/MERN?style=for-the-badge)
 ![GitHub stars](https://img.shields.io/github/stars/AwesomeRohit/MERN?style=for-the-badge)
 ![GitHub license](https://img.shields.io/github/license/AwesomeRohit/MERN?style=for-the-badge)
 
-[... rest of your README content ...]
 
 ---
 
