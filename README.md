@@ -32,10 +32,7 @@ A real-time chat application built with the MERN stack (MongoDB, Express.js, Rea
 
 - **Real-Time Messaging**: Send and receive messages instantly using Socket.io.
 - **User Authentication**: Secure sign-up/login with JWT (JSON Web Tokens).
-- **Chat Rooms**: Create or join public/private chat rooms.
 - **Responsive Design**: Works seamlessly on desktop and mobile devices.
-- **Dark/Light Mode**: Toggle between themes.
-- **Profile Customization**: Upload profile pictures.
 - **Message History**: View previous messages when joining a room.
 
 ---
@@ -46,8 +43,8 @@ A real-time chat application built with the MERN stack (MongoDB, Express.js, Rea
 - **Backend**: Node.js, Express.js, Socket.io
 - **Database**: MongoDB (Mongoose ODM)
 - **Authentication**: JWT (JSON Web Tokens)
-- **State Management**: Context API/Redux (if used)
-- **Deployment**: Heroku/Netlify (optional)
+- **State Management**: Context API/Redux 
+- **Deployment**: Heroku/Netlify 
 
 ---
 
